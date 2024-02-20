@@ -4,21 +4,26 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.agn.superkahramanbtk.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    public lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding=ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        //setContentView(R.layout.activity_main)
 
         //veri hazırlığı
         var voleybolcuIsimleri=ArrayList<String>()
-        voleybolcuIsimleri.add("zehra Güneş")
+        voleybolcuIsimleri.add("Zehra Güneş")
         voleybolcuIsimleri.add("Saliha Şahin")
         voleybolcuIsimleri.add("Arina Fedoretseva")
         voleybolcuIsimleri.add("Anastasia")
         voleybolcuIsimleri.add("Hilal Kocakara")
 
-    //görselleri nesneleştirmek için bitmap
+        //görselleri nesneleştirmek için bitmap
         //verimsiz tanımlama
         val zehraBitmap=BitmapFactory.decodeResource(applicationContext.resources,R.drawable.zehra)
         val salihaBitmap=BitmapFactory.decodeResource(applicationContext.resources,R.drawable.saliha)
@@ -33,6 +38,9 @@ class MainActivity : AppCompatActivity() {
         vlybGrs.add(anastasiaBitmap)
         vlybGrs.add(hilalBitmap)
 
-        val adapter=RecyclerAdapter(voleybolcuIsimleri)
+        val layoutManeger=LinearLayoutManager(this)
+        binding.recyclerView.layoutManager=layoutManeger
+        val adapter=RecyclerAdapter(voleybolcuIsimleri,vlybGrs)
+        binding.recyclerView.adapter=adapter
     }
 }

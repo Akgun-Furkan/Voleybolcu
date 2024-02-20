@@ -10,6 +10,14 @@ class TanitimActivity : AppCompatActivity() {
         binding=ActivityTanitimBinding.inflate(layoutInflater)
         setContentView(binding.root)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tanitim)
+        //setContentView(R.layout.activity_tanitim)
+        val intent=intent
+        var secilenOyuncu=intent.getStringExtra("voleybolcu")
+        binding.textView.text=secilenOyuncu
+        val secilenVoleybolcu=SingletonClass.SecilenVoleybolcu
+        val secilenGorsel=SingletonClass.gorsel
+        binding.imageView.setImageBitmap(secilenGorsel)
+
+
     }
 }
