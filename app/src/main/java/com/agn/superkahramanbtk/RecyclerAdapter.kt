@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.agn.superkahramanbtk.databinding.RecyclerRowBinding
 
 
-class RecyclerAdapter(val voleybolList:ArrayList<String>, val voleybolGörsel:ArrayList<Bitmap>):RecyclerView.Adapter<RecyclerAdapter.SuperkVoleybolVH>() {
+class RecyclerAdapter(val voleybolList:ArrayList<String>, val voleybolGorsel:ArrayList<Int>):RecyclerView.Adapter<RecyclerAdapter.SuperkVoleybolVH>() {
     private lateinit var binding:RecyclerRowBinding
 
     class SuperkVoleybolVH(itemView: View):RecyclerView.ViewHolder(itemView){
@@ -34,15 +34,19 @@ class RecyclerAdapter(val voleybolList:ArrayList<String>, val voleybolGörsel:Ar
 
         //holder.itemView.recycler1.text=voleybolList.get(position)
         val currentItem = voleybolList[position]
-        val currentBitmap = voleybolGörsel[position]
+        val currentBitmap = voleybolGorsel[position]
 
         val binding = RecyclerRowBinding.bind(holder.itemView)
         binding.recycler1.text = currentItem
         holder.itemView.setOnClickListener {
             val intent= Intent(holder.itemView.context,TanitimActivity::class.java)
             intent.putExtra("voleybolcu",voleybolList.get(position))
-            val singelton=SingletonClass.SecilenVoleybolcu
-            singelton.gorsel=currentBitmap
+
+            /*val singelton=SingletonClass.SecilenVoleybolcu
+            singelton.gorsel=currentBitmap*/
+            intent.putExtra("voleybolGörsel",voleybolGorsel.get(position))
+
+
             holder.itemView.context.startActivity(intent)
         }
         // Görseli ayarlamak için:

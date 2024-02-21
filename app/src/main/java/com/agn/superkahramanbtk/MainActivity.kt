@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         voleybolcuIsimleri.add("Hilal Kocakara")
 
         //görselleri nesneleştirmek için bitmap
-        //verimsiz tanımlama
+        /*//verimsiz tanımlama
         val zehraBitmap=BitmapFactory.decodeResource(applicationContext.resources,R.drawable.zehra)
         val salihaBitmap=BitmapFactory.decodeResource(applicationContext.resources,R.drawable.saliha)
         val arinaBitmap=BitmapFactory.decodeResource(applicationContext.resources,R.drawable.arina)
@@ -36,11 +36,24 @@ class MainActivity : AppCompatActivity() {
         vlybGrs.add(salihaBitmap)
         vlybGrs.add(arinaBitmap)
         vlybGrs.add(anastasiaBitmap)
-        vlybGrs.add(hilalBitmap)
+        vlybGrs.add(hilalBitmap)*/
+        //verimli tanımlama
+        val zehraDrawableId=R.drawable.zehra
+        val salihaDrawableId=R.drawable.saliha
+        val arinaDrawableId=R.drawable.arina
+        val anastasiaDrawableId=R.drawable.anastasia
+        val hilalDrawableId=R.drawable.hilal
 
+        var vlybGrsDrawable=ArrayList<Int>()
+        vlybGrsDrawable.add(zehraDrawableId)
+        vlybGrsDrawable.add(salihaDrawableId)
+        vlybGrsDrawable.add(arinaDrawableId)
+        vlybGrsDrawable.add(anastasiaDrawableId)
+        vlybGrsDrawable.add(hilalDrawableId)
+    //adapter
         val layoutManeger=LinearLayoutManager(this)
         binding.recyclerView.layoutManager=layoutManeger
-        val adapter=RecyclerAdapter(voleybolcuIsimleri,vlybGrs)
+        val adapter=RecyclerAdapter(voleybolcuIsimleri,vlybGrsDrawable)
         binding.recyclerView.adapter=adapter
     }
 }
